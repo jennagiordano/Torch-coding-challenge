@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  fetchSingleCampus,
-  updateSingleCampus,
-  updateCampusStudents,
-} from "../redux/singleCampus";
+  fetchSingleSubway,
+  updateSingleSubway,
+  updateSubwayStudents,
+} from "../redux/singleSubway";
 import { Link } from "react-router-dom";
-import NewCampusForm from "./NewCampusForm";
 
-export class SingleCampus extends React.Component {
+export class SingleSubway extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,10 +18,10 @@ export class SingleCampus extends React.Component {
     this.unregisterStudent = this.unregisterStudent.bind(this);
   }
   async componentDidMount() {
-    let singleCampusResponse = await this.props.getSingleCampus(
-      this.props.match.params.campusId
+    let singleSubwayResponse = await this.props.getSingleSubway(
+      this.props.match.params.subwayId
     );
-    if (singleCampusResponse === true) {
+    if (singleSubwayResponse === true) {
       this.setState({
         renderForm: true,
         loading: false,
@@ -30,8 +29,8 @@ export class SingleCampus extends React.Component {
     }
   }
 
-  handleSubmit(campusId, campusData) {
-    this.props.put(campusId, campusData);
+  handleSubmit(subwayId, subwayData) {
+    this.props.put(subwayId, subwayData);
   }
 
   unregisterStudent(e) {
@@ -39,31 +38,31 @@ export class SingleCampus extends React.Component {
   }
 
   render() {
-    let singleCampus = this.props.singleCampus || [];
-    let students = this.props.singleCampus.students || [];
+    let singleSubway = this.props.singleSubway || [];
+    let students = this.props.singleSubway.students || [];
     return (
       <div>
         {this.state.loading ? (
-          <h1>Loading Campus....</h1>
+          <h1>Loading Subway....</h1>
         ) : (
           <div>
-            {singleCampus.id ? (
-              <div className="componentContainer singleCampusContainer">
-                <div id="singleCampus">
-                  <h2>{singleCampus.name}</h2>
-                  <img src={singleCampus.imageUrl} />
-                  <h3>Campus Information</h3>
-                  <p>{singleCampus.address}</p>
-                  <p>{singleCampus.description}</p>
+            {singleSubway.id ? (
+              <div className="componentContainer singleSubwayContainer">
+                <div id="singleSubway">
+                  <h2>{singleSubway.name}</h2>
+                  <img src={singleSubway.imageUrl} />
+                  <h3>Subway Information</h3>
+                  <p>{singleSubway.address}</p>
+                  <p>{singleSubway.description}</p>
                 </div>
 
-                <div id="campusStudents">
+                <div id="subwayStudents">
                   <h2>Students</h2>
                   {students.length > 0 ? (
                     <div>
                       {students.map((student) => {
                         return (
-                          <div className="singleCampusStudent" key={student.id}>
+                          <div className="singleSubwayStudent" key={student.id}>
                             <Link to={`/students/${student.id}`}>
                               <p>
                                 {student.firstName} {student.lastName}
@@ -85,18 +84,9 @@ export class SingleCampus extends React.Component {
                     <p>No students enrolled here yet.</p>
                   )}
                 </div>
-
-                {this.state.renderForm && (
-                  <div className="formContainer">
-                    <NewCampusForm
-                      campus={singleCampus}
-                      handleSubmit={this.handleSubmit}
-                    />
-                  </div>
-                )}
               </div>
             ) : (
-              <h1>Sorry, Campus Does Not Exist.</h1>
+              <h1>Sorry, Subway Does Not Exist.</h1>
             )}
           </div>
         )}
@@ -105,19 +95,19 @@ export class SingleCampus extends React.Component {
   }
 }
 const mapState = (state) => {
-  return { singleCampus: state.singleCampus };
+  return { singleSubway: state.singleSubway };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    getSingleCampus: (id) => {
-      return dispatch(fetchSingleCampus(id));
+    getSingleSubway: (id) => {
+      return dispatch(fetchSingleSubway(id));
     },
-    put: (campusId, campusData) =>
-      dispatch(updateSingleCampus(campusId, campusData)),
-    updateCampusStudents: (campusId, campus, studentId) =>
-      dispatch(updateCampusStudents(campusId, campus, studentId)),
+    put: (subwayId, subwayData) =>
+      dispatch(updateSingleSubway(subwayId, subwayData)),
+    updateSubwayStudents: (subwayId, subway, studentId) =>
+      dispatch(updateSubwayStudents(subwayId, subway, studentId)),
   };
 };
 
-export default connect(mapState, mapDispatch)(SingleCampus);
+export default connect(mapState, mapDispatch)(SingleSubway);

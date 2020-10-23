@@ -1,39 +1,38 @@
 import React from "react";
 import { connect } from "react-redux";
 import {
-  fetchCampuses,
-  removeCampus,
-  postNewCampus,
+  fetchSubways,
+  removeSubway,
+  postNewSubway,
   sortByName,
   sortByNumberOfStudents,
-  filterCampusesWithNoStudents,
-} from "../redux/campuses";
-import NewCampusForm from "./NewCampusForm";
+  filterSubwaysWithNoStudents,
+} from "../redux/subways";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
-// Notice that we're exporting the AllCampuses component twice. The named export
+// Notice that we're exporting the AllSubways component twice. The named export
 // (below) is not connected to Redux, while the default export (at the very
 // bottom) is connected to Redux. Our tests should cover _both_ cases.
-export class AllCampuses extends React.Component {
+export class AllSubways extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       hasError: false,
-      showFilterCampusesButton: true,
+      showFilterSubwaysButton: true,
     };
 
     this.handleDelete = this.handleDelete.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.sortByInput = this.sortByInput.bind(this);
-    this.filterCampusesWithNoStudents = this.filterCampusesWithNoStudents.bind(
+    this.filterSubwaysWithNoStudents = this.filterSubwaysWithNoStudents.bind(
       this
     );
-    this.showFilterCampusesButton = this.showFilterCampusesButton.bind(this);
+    this.showFilterSubwaysButton = this.showFilterSubwaysButton.bind(this);
   }
   componentDidMount() {
     try {
-      this.props.getCampuses();
+      this.props.getSubways();
     } catch (error) {
       this.setState({
         hasError: error,
@@ -42,24 +41,24 @@ export class AllCampuses extends React.Component {
   }
 
   handleDelete(e) {
-    this.props.deleteCampus(e.target.value);
+    this.props.deleteSubway(e.target.value);
   }
 
   handleSubmit(formState) {
     this.props.post(formState);
   }
 
-  filterCampusesWithNoStudents() {
-    this.props.filterCampusesWithNoStudents();
+  filterSubwaysWithNoStudents() {
+    this.props.filterSubwaysWithNoStudents();
     this.setState({
-      showFilterCampusesButton: false,
+      showFilterSubwaysButton: false,
     });
   }
 
-  showFilterCampusesButton() {
-    this.props.getCampuses();
+  showFilterSubwaysButton() {
+    this.props.getSubways();
     this.setState({
-      showFilterCampusesButton: true,
+      showFilterSubwaysButton: true,
     });
   }
 
@@ -67,14 +66,14 @@ export class AllCampuses extends React.Component {
     let value = e.target.value;
 
     if (value.startsWith("Number")) {
-      this.props.sortByCampusNumberOfStudents();
+      this.props.sortBySubwayNumberOfStudents();
     } else {
-      this.props.sortByCampusName();
+      this.props.sortBySubwayName();
     }
   }
 
   render() {
-    const campuses = this.props.campuses || [];
+    const subways = this.props.subways || [];
     if (this.state.hasError) {
       return (
         <div>
@@ -84,7 +83,7 @@ export class AllCampuses extends React.Component {
     } else {
       return (
         <div className="componentContainer">
-          <h2 className="center">Campuses</h2>
+          <h2 className="center">Subways</h2>
           <div>
             <select
               onChange={(e) => {
@@ -95,42 +94,42 @@ export class AllCampuses extends React.Component {
                 Sort by
               </option>
               <option>Number of Students - Highest to Lowest</option>
-              <option>Campus Name - A-Z</option>
+              <option>Subway Name - A-Z</option>
             </select>
-            {this.state.showFilterCampusesButton ? (
+            {this.state.showFilterSubwaysButton ? (
               <button
                 id="filterButton"
                 type="submit"
-                onClick={this.filterCampusesWithNoStudents}
+                onClick={this.filterSubwaysWithNoStudents}
               >
-                <FontAwesomeIcon icon={faFilter} /> Filter Campuses With No
+                <FontAwesomeIcon icon={faFilter} /> Filter Subways With No
                 Students
               </button>
             ) : (
               <button
                 id="filterButton"
                 type="submit"
-                onClick={this.showFilterCampusesButton}
+                onClick={this.showFilterSubwaysButton}
               >
-                <FontAwesomeIcon icon={faFilter} /> Show All Campuses
+                <FontAwesomeIcon icon={faFilter} /> Show All Subways
               </button>
             )}
           </div>
           <hr />
           <div className="innerComponent">
-            {campuses.map((campus) => {
+            {subways.map((subway) => {
               return (
-                <div key={campus ? campus.id : "x"} className="componentColumn">
-                  {campus && (
-                    <div className="campusItem">
+                <div key={subway ? subway.id : "x"} className="componentColumn">
+                  {subway && (
+                    <div className="subwayItem">
                       <div>
-                        <a href={`/campuses/${campus.id}`}>
-                          <h4>{campus.name}</h4>
-                          <img src={`${campus.imageUrl}`} />
+                        <a href={`/subways/${subway.id}`}>
+                          <h4>{subway.name}</h4>
+                          <img src={`${subway.imageUrl}`} />
                         </a>
                         <button
                           id="deleteButton"
-                          value={campus.id}
+                          value={subway.id}
                           type="submit"
                           onClick={this.handleDelete}
                         >
@@ -144,9 +143,6 @@ export class AllCampuses extends React.Component {
             })}
           </div>
           <hr />
-          <div className="formContainer">
-            <NewCampusForm handleSubmit={this.handleSubmit} />
-          </div>
         </div>
       );
     }
@@ -154,28 +150,28 @@ export class AllCampuses extends React.Component {
 }
 
 const mapState = (state) => {
-  return { campuses: state.campuses };
+  return { subways: state.subways };
 };
 
 const mapDispatch = (dispatch) => {
   return {
-    getCampuses: () => {
-      return dispatch(fetchCampuses());
+    getSubways: () => {
+      return dispatch(fetchSubways());
     },
-    deleteCampus: (id) => {
-      return dispatch(removeCampus(id));
+    deleteSubway: (id) => {
+      return dispatch(removeSubway(id));
     },
-    sortByCampusName: () => {
+    sortBySubwayName: () => {
       return dispatch(sortByName());
     },
-    sortByCampusNumberOfStudents: () => {
+    sortBySubwayNumberOfStudents: () => {
       return dispatch(sortByNumberOfStudents());
     },
-    filterCampusesWithNoStudents: () => {
-      return dispatch(filterCampusesWithNoStudents());
+    filterSubwaysWithNoStudents: () => {
+      return dispatch(filterSubwaysWithNoStudents());
     },
-    post: (newCampusEntry) => dispatch(postNewCampus(newCampusEntry)),
+    post: (newSubwayEntry) => dispatch(postNewSubway(newSubwayEntry)),
   };
 };
 
-export default connect(mapState, mapDispatch)(AllCampuses);
+export default connect(mapState, mapDispatch)(AllSubways);

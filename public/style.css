@@ -1,8 +1,3 @@
-/*
- * Hi! I'm your stylesheet! I've got some sensible defaults here,
- * but feel free to change me to your heart's content!
- */
-
 * {
   box-sizing: border-box;
   font-family: arial, sans-serif;
@@ -76,11 +71,8 @@ form button {
   flex-wrap: wrap;
 }
 
-.campusItem,
-.studentItem,
-#singleCampus,
-#campusStudents,
-#singleStudent {
+.subwayItem,
+#singleSubway {
   background-color: white;
   border: 2px black solid;
   border-radius: 20px;
@@ -91,52 +83,21 @@ form button {
   justify-content: center;
 }
 
-.singleStudentContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-grow: 3;
-}
-
-#singleCampus,
-#campusStudents {
+#singleSubway {
   margin: 2%;
   width: 500px;
   height: 400px;
 }
 
-#singleStudent {
-  margin: 2%;
-  width: 500px;
-  height: 450px;
-}
-
-#singleCampus {
+#singleSubway {
   float: left;
 }
-#campusStudents {
-  float: right;
-}
 
-.campusItem,
-.studentItem {
+.subwayItem {
   width: 350px;
   height: 300px;
 }
 
-.singleCampusStudent {
-  width: 250px;
-  border: 2px grey solid;
-  margin: 2%;
-  padding: 1%;
-  font-weight: bold;
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: center;
-  box-shadow: grey 2px 2px 2px 2px;
-  flex: 1;
-}
 #deleteButton {
   color: black;
   background-color: red;

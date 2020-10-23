@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import AllCampuses from "./AllCampuses";
+import AllSubways from "./AllSubways";
 import Home from "./Home";
-import SingleCampus from "./SingleCampus";
+import SingleSubway from "./SingleSubway";
 
 const Routes = () => {
   return (
@@ -18,8 +18,8 @@ const Routes = () => {
         </nav>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/subways" component={AllCampuses} />
-          <Route exact path="/subways/:subwayId" component={SingleCampus} />
+          <Route exact path="/subways" component={AllSubways} />
+          <Route exact path="/subways/:subwayId" component={SingleSubway} />
         </Switch>
       </div>
     </Router>

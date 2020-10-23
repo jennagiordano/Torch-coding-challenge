@@ -1,16 +1,10 @@
-// The purpose of this module is to bring your Sequelize instance (`db`) together
-// with your models, for which you'll find some blank files in this directory:
+// The purpose of this module is to bring Sequelize instance (`db`) together
+// with models
 
 const db = require("./database");
-const Campus = require("./campus");
-
-// This is a great place to establish associations between your models
-// (https://sequelize-guides.netlify.com/association-types/).
-// Example:
-//
+const Subway = require("./subway");
 
 module.exports = {
-  // Include your models in this exports object as well!
   db,
-  Campus,
+  Subway,
 };
