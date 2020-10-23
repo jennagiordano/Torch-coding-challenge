@@ -1,0 +1,218 @@
+/*
+ * Hi! I'm your stylesheet! I've got some sensible defaults here,
+ * but feel free to change me to your heart's content!
+ */
+
+* {
+  box-sizing: border-box;
+  font-family: arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(#ffffff, #c0c0c0);
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+}
+
+nav {
+  align-items: center;
+  background-color: #333333;
+  color: #c0c0c0;
+  display: flex;
+  height: 80px;
+  padding: 10px;
+}
+
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.navBarLink {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 2%;
+}
+.navBarLink:hover {
+  color: #00f;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 2;
+  margin: 1em;
+  width: 700px;
+  background-color: white;
+  padding: 2%;
+  border: 2px solid black;
+  border-radius: 20px;
+  box-shadow: #333333 2px 2px 2px 2px;
+}
+
+form input {
+  padding: 0.3em;
+  margin: 0.5em 0;
+  font-size: 0.5em;
+}
+
+form button {
+  color: white;
+  background-color: #59a9e9;
+}
+
+.componentContainer {
+  margin: 2%;
+}
+
+.innerComponent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.campusItem,
+.studentItem,
+#singleCampus,
+#campusStudents,
+#singleStudent {
+  background-color: white;
+  border: 2px black solid;
+  border-radius: 20px;
+  box-shadow: #333333 2px 2px 2px 2px;
+  margin-bottom: 2%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.singleStudentContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-grow: 3;
+}
+
+#singleCampus,
+#campusStudents {
+  margin: 2%;
+  width: 500px;
+  height: 400px;
+}
+
+#singleStudent {
+  margin: 2%;
+  width: 500px;
+  height: 450px;
+}
+
+#singleCampus {
+  float: left;
+}
+#campusStudents {
+  float: right;
+}
+
+.campusItem,
+.studentItem {
+  width: 350px;
+  height: 300px;
+}
+
+.singleCampusStudent {
+  width: 250px;
+  border: 2px grey solid;
+  margin: 2%;
+  padding: 1%;
+  font-weight: bold;
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  box-shadow: grey 2px 2px 2px 2px;
+  flex: 1;
+}
+#deleteButton {
+  color: black;
+  background-color: red;
+  border: 3px solid black;
+  border-radius: 20px;
+  box-shadow: #333333 1px 1px 1px 1px;
+  width: 40px;
+  height: 40px;
+  margin: 2%;
+}
+
+.componentColumn {
+  flex: 1;
+}
+
+.formColumn {
+  flex: 1;
+}
+
+img {
+  width: 250px;
+  height: 200px;
+  border-radius: 25px;
+}
+
+#unregisterButton {
+  color: black;
+  font-weight: bold;
+  background-color: #bab063;
+  border: 3px solid black;
+  width: 100px;
+  height: 30px;
+  margin: 2%;
+}
+
+.formSubmissionError {
+  color: red;
+  font-weight: bold;
+}
+
+.formContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-grow: 3;
+}
+
+h1,
+h2,
+h5 {
+  text-align: center;
+  font-style: italic;
+}
+
+a {
+  color: black;
+}
+
+.mainComponent {
+  box-shadow: #333333 2px 2px 2px 2px;
+  margin: 2%;
+  text-align: center;
+  border-radius: 25px;
+}
+
+select,
+#filterButton {
+  padding: 1%;
+  margin-bottom: 1%;
+  margin-right: 2%;
+  border-radius: 10px;
+  border: 0px;
+  box-shadow: grey 1px 1px 1px 1px;
+  font-weight: bold;
+}
+
+#filterButton {
+  background-color: white;
+}
