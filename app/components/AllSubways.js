@@ -8,15 +8,23 @@ export class AllSubways extends React.Component {
     this.state = {
       hasError: false,
     };
+
+    this.getSubways = this.getSubways.bind(this);
   }
   componentDidMount() {
     try {
-      this.props.getSubways();
+      this.getSubways();
+      setInterval(this.getSubways, 1100);
     } catch (error) {
       this.setState({
         hasError: error,
       });
     }
+  }
+
+  getSubways() {
+    this.props.getSubways();
+    console.log(this.state.delayedSubways, this.props.delayedSubways);
   }
 
   render() {

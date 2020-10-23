@@ -9,10 +9,6 @@ export const SET_SINGLE_SUBWAY = "SET_SINGLE_SUBWAY";
 //get action creators
 export const GOT_NEW_SUBWAY_FROM_SERVER = "GOT_NEW_SUBWAY_FROM_SERVER";
 
-//filter subway action creators
-export const FILTER_SUBWAYS_WITHOUT_STUDENTS =
-  "FILTER_SUBWAYS_WITHOUT_STUDENTS";
-
 const appReducer = combineReducers({
   subways: subwaysReducer,
   singleSubway: singleSubwayReducer,

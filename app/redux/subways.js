@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  SET_SUBWAYS,
-  GOT_NEW_SUBWAY_FROM_SERVER,
-  FILTER_SUBWAYS_WITHOUT_STUDENTS,
-} from "./index";
+import { SET_SUBWAYS, GOT_NEW_SUBWAY_FROM_SERVER } from "./index";
 
 //ACTION CREATOR FUNCTIONS
 
@@ -22,12 +18,6 @@ export const gotNewSubwayFromServer = (subway) => {
     subway,
   };
 };
-
-//FILTER FUNCTIONS
-//filter subways with no students
-export const filterSubwaysWithNoStudents = () => ({
-  type: FILTER_SUBWAYS_WITHOUT_STUDENTS,
-});
 
 //fetch Subway
 export const fetchSubways = () => {
@@ -48,7 +38,6 @@ const initialState = { delayedSubways: [], notDelayedSubways: [] };
 const subwaysReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SUBWAYS:
-      console.log("acion subways: ", action.subways);
       return {
         delayedSubways: [
           action.subways.filter((subway) => subway.status === "DELAYED"),
@@ -59,8 +48,6 @@ const subwaysReducer = (state = initialState, action) => {
       };
     case GOT_NEW_SUBWAY_FROM_SERVER:
       return [...state, action.subway];
-    case FILTER_SUBWAYS_WITHOUT_STUDENTS:
-      return [...state.filter((subway) => subway.status === "DELAYED")];
     default:
       return state;
   }
