@@ -33,15 +33,18 @@ export class SingleSubway extends React.Component {
                 <div id="singleSubway">
                   <h2>{singleSubway.name}</h2>
                   <br />
-                  {this.props.match.url.split("/")[1] === "status" ? (
-                    <p>Status: {singleSubway.status}</p>
-                  ) : (
-                    <p>
-                      Uptime:{" "}
-                      {singleSubway.totalTime - singleSubway.totalTimeDelayed}
-                    </p>
-                  )}
                 </div>
+                {this.props.match.url.split("/")[1] === "status" ? (
+                  <h1>Status: {singleSubway.status}</h1>
+                ) : (
+                  <p>
+                    <h1>
+                      Uptime:{" "}
+                      {singleSubway.totalTime - singleSubway.totalTimeDelayed}{" "}
+                      minutes
+                    </h1>
+                  </p>
+                )}
               </div>
             ) : (
               <h1>Sorry, Subway Does Not Exist.</h1>

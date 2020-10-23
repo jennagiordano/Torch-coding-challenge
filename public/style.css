@@ -61,92 +61,17 @@ main {
   height: 100px;
 }
 
-#singleSubway {
-  float: left;
-}
-
 .subwayItem {
   width: 100px;
   height: 100px;
   overflow: hidden;
 }
 
-#deleteButton {
-  color: black;
-  background-color: red;
-  border: 3px solid black;
-  border-radius: 20px;
-  box-shadow: #333333 1px 1px 1px 1px;
-  width: 40px;
-  height: 40px;
-  margin: 2%;
-}
-
 .componentColumn {
   flex: 1;
 }
 
-.formColumn {
-  flex: 1;
-}
-
-img {
-  width: 250px;
-  height: 200px;
-  border-radius: 25px;
-}
-
-#unregisterButton {
-  color: black;
-  font-weight: bold;
-  background-color: #bab063;
-  border: 3px solid black;
-  width: 100px;
-  height: 30px;
-  margin: 2%;
-}
-
-.formSubmissionError {
-  color: red;
-  font-weight: bold;
-}
-
-.formContainer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-grow: 3;
-}
-
-h1,
-h2,
-h5 {
-  text-align: center;
-  font-style: italic;
-}
-
 a {
   color: black;
-}
-
-.mainComponent {
-  box-shadow: #333333 2px 2px 2px 2px;
-  margin: 2%;
-  text-align: center;
-  border-radius: 25px;
-}
-
-select,
-#filterButton {
-  padding: 1%;
-  margin-bottom: 1%;
-  margin-right: 2%;
-  border-radius: 10px;
-  border: 0px;
-  box-shadow: grey 1px 1px 1px 1px;
-  font-weight: bold;
-}
-
-#filterButton {
-  background-color: white;
+  text-decoration: none;
 }
