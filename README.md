@@ -1,6 +1,6 @@
 # Torch Coding Assessment
 
-Youtube User Story Video: 
+Youtube User Story Video:
 
 ## Getting started
 
@@ -9,45 +9,28 @@ Youtube User Story Video:
 3. Read the rest of this `README.md` carefully - it contains the requirements for the project and the grading rubric that will be used to assess it.
 4. Create `torch-project` and `torch-project-test` databases.
 5. Start the build process and your application with: `npm run start-dev`. If you're using Windows, you may need to execute `npm run start-server` and `npm run build-watch` separately (in their own terminal tabs).
-6. If you navigate to [localhost:1337](http://localhost:1337), you should see some UI already :) 
+6. If you navigate to [localhost:1337](http://localhost:1337), you should see some UI already :)
 
 ## Details
 
 ### The Premise
 
-You are the CTO of the Margaret Hamilton Interplanetary Academy of JavaScript. Create a RESTful web platform that allows you to manage your students and campuses. Before getting started, please carefully review the expectations as outlined below.
+For this exercise, you can use any language, libraries, or frameworks that you like, and consult Google and any other on-line or off-line written resources you wish. While there is not a strict time limit, the exercise is sized so that it should take approximately two to three hours of your time.
 
-### The tools
+We recommend you choose a language and (if applicable) framework that you’re comfortable with. We’ll want to see a realistic example of what you might write for a production application, even if the stack is different from what we use ourselves.
 
-For this project, you must use Express to handle HTTP requests and Sequelize to interface with your database. Likewise, you must use React, Redux and React-Redux on the front-end. This means that all important state (i.e. students and campuses) must be managed by the Redux store (unimportant state, like form data, may be managed by stateful React components). Components that display student/campus data should therefore be connected to the Redux store. If you perform side-effects (like AJAX requests), you should encapsulate them in thunks.
+Exercise: Your task is to create a modified interface to the NYC Subway status dashboard available online, with history information and the rudiments of a basic alerting feature.
 
-### Requirements + Rubric
+In brief, https://new.mta.info/ includes a service status element, screenshotted below.
+image.png
+A line is considered delayed if the status is equal to “Delays” in the above table, and is considered not to be delayed if it has any other status. Note that this means that we’re ignoring distinctions among other statuses like “Planned Work” — for the purpose of this project, all statuses other than “Delays” are equivalent.
 
-For the requirements and rubric, refer to the following two files:
+Your task is to create a small web service that does the following things:
+Continuously monitors the status of MTA service to see whether a line is delayed or not.
+When a line transitions from not delayed → delayed, you should print the following message to console or to a logfile: “Line <line_name> is experiencing delays”.
+Similarly, when a line transitions from delayed → not delayed, you should print the following message to console or to a logfile: “Line <line_name> is now recovered”.
+Exposes an endpoint called /status, which takes the name of a particular line as an argument and returns whether or not the line is currently delayed.
+Exposes an endpoint called /uptime, which also takes the name of a particular line as an argument and returns the fraction of time that it has not been delayed since inception.
+More concretely, “uptime” is defined as 1 - (total_time_delayed / total_time)
 
-- `REQUIREMENTS.md` - contains the functional requirements of the project
-- `RUBRIC.md` - contains the grading rubric for additional factors, as well as the formula for calculating the total score
-
-Make sure to read them carefully!
-
-There are some test specs already written for you to help you get started – these are _just a guide_ and are meant to help steer you through your coding process, or to be used as reference for writing your own test specs for extra credit (the tests that you can write for extra credit are marked with a leading \*\*\*). Passing or not passing these specs will not affect your grade.
-
-### Views and Functionality
-
-Take a look in the wireframes folder as a reference for how your front-end _could_ look. Of course, you are encouraged to be creative and flex your own design muscles, but the wireframes should function as a good baseline/inspirational resource. Either way, the most important part of the project is that it works - **design/appearance is extra-credit**. If there ever appears to be a conflict between the wireframes and the rubric/requirements below, **go with the letter of the rubric/requirements.**
-
-## Other Important Info
-
-### Video Walkthrough
-
-Please submit a short, 5 minute screencast of a walk-through of the functionality for each user story in your app. E.g. for "As a user, I can create a project", you can fill out the form for creating a project and then see the new project appear in the projects list. _There is no need to show us the code you wrote._ We recommend using Quicktime to record the screencast (instructions on how to do that [here](https://support.apple.com/kb/PH5882?locale=en_US&viewlocale=en_US)).
-
-Once you've recorded your screencast, please _upload it to YouTube as an unlisted video_. **Include a link to the video in your repo's README** and include your repo link in the video description. This will aid us in evaluating your submission.
-
-Well before the deadline, we recommend practicing this by recording a very short screencast and uploading it as an unlisted video. If you encounter any technical issues, reach out to us so that we can help you resolve them.
-
-## Evaluation
-
-- Requirements score (70%)
-- Rubric score (30%)
-- Extra credit (15% max)
+With the above in mind, you have wide latitude in deciding how your API works. If you think other arguments would be helpful for your API, you’re free to add them in addition to the arguments described above. Similarly, you can use whatever serialization format you’re comfortable with.

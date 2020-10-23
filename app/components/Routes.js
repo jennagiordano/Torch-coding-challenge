@@ -1,8 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import AllSubways from "./AllSubways";
-import Home from "./Home";
-import SingleSubway from "./SingleSubway";
+import SubwayStatus from "./SubwayStatus";
 
 const Routes = () => {
   return (
@@ -12,14 +11,11 @@ const Routes = () => {
           <Link to="/" className="navBarLink">
             <h4> Welcome!</h4>
           </Link>
-          <Link to="/subways" className="navBarLink">
-            <h5>Subways</h5>
-          </Link>
         </nav>
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/subways" component={AllSubways} />
-          <Route exact path="/subways/:subwayId" component={SingleSubway} />
+          <Route exact path="/" component={AllSubways} />
+          <Route exact path="/status/:subwayName" component={SubwayStatus} />
+          <Route exact path="/uptime/:subwayName" component={SubwayStatus} />
         </Switch>
       </div>
     </Router>

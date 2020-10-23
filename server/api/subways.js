@@ -12,11 +12,11 @@ router.get("/", async (req, res, next) => {
 });
 
 // GET /api/subway/:subwayId
-router.get("/:subwayId", async (req, res, next) => {
+router.get("/:name", async (req, res, next) => {
   try {
     const singleSubway = await Subway.findOne({
       where: {
-        id: req.params.subwayId,
+        name: req.params.name,
       },
     });
     res.send(singleSubway);
