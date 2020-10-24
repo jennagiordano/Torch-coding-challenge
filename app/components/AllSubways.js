@@ -24,7 +24,7 @@ export class AllSubways extends React.Component {
 
   getSubways() {
     this.props.getSubways();
-    console.log(this.state.delayedSubways, this.props.delayedSubways);
+    console.log("Monitoring changed subway statuses....");
   }
 
   render() {
